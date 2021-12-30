@@ -1,9 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useSpring, a } from "@react-spring/three";
-import { useFrame } from "@react-three/fiber";
 
 const Box = () => {
-    const meshRef = useRef();
     const [hovered, setHovered] = useState(false);
     const [active, setActive] = useState(false);
 
@@ -12,15 +10,8 @@ const Box = () => {
         color: hovered ? "gray" : "red",
     });
 
-    useFrame(() => {
-        meshRef.current.rotation.x += 0.01;
-        meshRef.current.rotation.y += 0.01;
-        meshRef.current.rotation.z += 0.01;
-    });
-
     return (
         <a.mesh
-            ref={meshRef}
             onClick={() => setActive((prev) => !prev)}
             onPointerOver={() => setHovered(true)}
             onPointerOut={() => setHovered(false)}
