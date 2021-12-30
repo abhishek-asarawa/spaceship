@@ -1,21 +1,25 @@
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 import "./App.css";
-import { Box, ControlOrbit, Plane } from "./components/3d";
+import { ControlOrbit, SpaceShip, Space } from "./components/3d";
 
 function App() {
     return (
         <Canvas
-            camera={{ position: [0, 2, 5] }}
+            camera={{ position: [20, 10, 10] }}
             onCreated={({ gl }) => {
                 gl.shadowMap.enabled = true;
                 gl.shadowMap.type = THREE.PCFSoftShadowMap;
             }}
         >
-            <fog attach="fog" args={["white", 5, 15]} />
+            {/* <fog attach="fog" args={["white", 5, 15]} /> */}
+            <ambientLight intensity={0.1} />
+            <spotLight position={[100, 100, 100]} penumbra={1} castShadow />
             <ControlOrbit />
-            <Plane />
-            <Box />
+            {/* <Plane /> */}
+            {/* <Box /> */}
+            <SpaceShip />
+            <Space />
         </Canvas>
     );
 }
