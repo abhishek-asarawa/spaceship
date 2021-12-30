@@ -12,7 +12,7 @@ function App() {
                 gl.shadowMap.type = THREE.PCFSoftShadowMap;
             }}
         >
-            {/* <fog attach="fog" args={["white", 5, 15]} /> */}
+            <fog attach="fog" args={["black", 1, 50]} />
             <ambientLight intensity={0.1} />
             <spotLight position={[100, 100, 100]} penumbra={1} castShadow />
             <ControlOrbit />
